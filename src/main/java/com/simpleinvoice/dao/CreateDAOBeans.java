@@ -12,8 +12,6 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
-import com.simpleinvoice.entities.Test;
-
 @Configuration
 @EnableJpaRepositories
 public class CreateDAOBeans {
@@ -26,7 +24,7 @@ public class CreateDAOBeans {
 		LocalContainerEntityManagerFactoryBean factory
 			= new LocalContainerEntityManagerFactoryBean();
 		factory.setDataSource(dataSource);
-		factory.setPackagesToScan(Test.class.getPackage().getName());
+		factory.setPackagesToScan("com.simpleinvoice.entities");
 		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
 		adapter.setShowSql(true);
 		factory.setJpaVendorAdapter(adapter);

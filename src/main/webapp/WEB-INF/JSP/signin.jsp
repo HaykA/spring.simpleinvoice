@@ -17,23 +17,30 @@
 <spring:message code='Password' var="text_Password"/>
 <spring:message code='SignIn' var="text_SignIn"/>
 <spring:message code='Register' var="text_Register"/>
-<spring:message code='SignInOrRegister' var="text_SignInOrRegister"/>
 
 <%-- HTML --%>
 <!DOCTYPE html>
 <html>
   <head>
-    <si:head title="${text_SignInOrRegister}" showBrandname="true"/>
+    <si:head title="${text_SignIn}" showBrandname="true"/>
     <link rel="stylesheet" href="<c:url value='/browser/core/css/signin.css' />" type="text/css"/>
   </head>
   <body>
     <header id="main-header">
-      <form method="post">
-        <div class="main-header-container clearfix">
-          <div id="logo">
-            <img alt="${text_Logo}" src="<c:url value='/images/core/logo.jpg'/>"/>
+      <div class="main-header-container clearfix">
+          <div id="logo-small">
+            <img alt="${text_Logo}" src="<c:url value='/images/core/logo72.jpg'/>"/>
           </div>
-          <div id="signin-inputgroup" class="pull-right">
+          <h1>Simple Invoice 1.0</h1>
+          <a href="#" class="btn btn-sm btn-success"><bs:fa icon="asterisk"/>&nbsp;${text_Register}</a>      
+      </div>
+      
+    </header>
+    <!-- <div class="alert alert-warning">Hello world</div>  -->
+    <section id="main-section">
+    <form method="post">
+        
+          <div id="signin-inputgroup">
             <div class="input-group input-group-floatleft">
               <span class="input-group-addon" id="addon-username"><bs:gi icon="user"/></span>
               <input type="text" name="username" id="ipt-username" class="form-control"
@@ -48,16 +55,15 @@
               <button type="submit" class="btn btn-primary"><bs:fa icon="sign-in"/>&nbsp;${text_SignIn}</button>
             </div>
           </div>
-        </div>
+
         <security:csrfInput/>
       </form>
-    </header>
-    <!-- <div class="alert alert-warning">Hello world</div>  -->
-    <section id="main-section">
+    
+    
       <article id="main-article">
         <div id="signin-body">
-          <h1>Simple Invoice 1.0</h1>
-          <a href="#" class="btn btn-lg btn-success"><bs:fa icon="asterisk"/>&nbsp;${text_Register}</a>
+          
+          
         </div>
       </article>
     </section>

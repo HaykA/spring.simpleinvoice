@@ -1,0 +1,58 @@
+@CHARSET "UTF-8";
+#main-header {
+	background: url('../../../images/core/bg.jpg');
+	padding: 5px 15px;
+	vertical-align: middle;
+}
+
+#main-header #ipt-username, #ipt-password {
+	width: 175px;
+}
+
+#main-header #signin-inputgroup .input-group-floatleft {
+	margin-left: 4px;
+	float: left
+}
+
+#main-header #signin-inputgroup .input-group-floatleft span.input-group-addon {
+	display: block;
+	padding: 8px 12px;
+	float: left;
+	width: 39px;
+}
+
+#logo {
+  display: table-cell;
+  background-color: #fff;
+  padding: 5px 14px;
+  float: left;
+  
+  border-radius: 10px;
+  margin-bottom: -30px;
+  box-shadow: 0 0 5px #888888;
+}
+
+#signin-body {
+  margin-top: 35px;
+  padding: 5px 15px;
+  background-color: #dddde3;
+}
+
+#logo-small {
+  display: table-cell;
+  background-color: #fff;
+  padding: 5px 10px;
+  float: left;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #888888;
+}
+
+#main-header h1 {
+  margin: 0 10px;
+  font-size: 3em;
+}
+
+.main-header-container {
+  display: flex;
+  align-items: center;
+}
