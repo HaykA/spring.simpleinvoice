@@ -11,15 +11,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/signin")
 public class SignInController {
 	private final static String VIEW = "signin";
-	private final static String REDIRECT_IF_AUTHENTICATED = "redirect:/";
-	 
+	private final static String REDIRECT_TO_INDEX = "redirect:/";
+
 
 	@RequestMapping(method = RequestMethod.GET)
 	String signin(Locale locale, Principal principal) {
 		if (principal == null) {
 			return VIEW;
 		}
-		return REDIRECT_IF_AUTHENTICATED;
+		return REDIRECT_TO_INDEX;
 	}
 	
+	@RequestMapping(params = "logout", method = RequestMethod.GET)
+	String signout(Locale locale) {
+		return REDIRECT_TO_INDEX;
+	}
 }

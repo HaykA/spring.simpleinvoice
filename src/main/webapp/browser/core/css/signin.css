@@ -39,12 +39,27 @@
   width: 175px;
 }
 
-.signup-body,
-.signin-body {
+.signup-body .form-group .input-group-addon {
+  border-radius: 4px 4px 0 0;
+  border: 1px solid #ccc;
+  text-align: left;
+  width: 100%;
+}
+
+.signup-body .form-group .form-control {
+  border-radius: 0 0 4px 4px;
+  margin-top: -1px;
+  width: 100%;
+}
+
+.index-body,
+.signin-body,
+.signup-body {
   background-color: #e9eaf3;
   padding: 5px 15px;
 }
 
+.index-body h1,
 .signup-body h1 {
   font-family: "Titillium Web";
   margin-top: 10px;
@@ -54,11 +69,16 @@
   margin: 50px auto;
 }
 
+.signup-body > #signup-form {
+  margin-bottom: 15px;
+}
+
 .signin-body > #signin-form .form-group {
   margin-bottom: 10px;
 }
 
-.signin-alert {
+.signin-alert,
+.signup-alert {
   margin: 10px;
 }
 
@@ -69,6 +89,7 @@
     width: 100%;
   }
   
+  .index-body h1,
   .signup-body h1 {
     font-size: 10vw;
   } 
@@ -80,13 +101,25 @@
   #brandname a.brand {
     font-size: 2.5em;
   }
+  
+  .signup-body .form-group {
+    width: 100%;
+  }
+  
+  
+  .g-recaptcha {
+    transform:scale(0.81);
+    transform-origin:0 0;
+  }
 }
 
 @media screen and (min-width: 479px) {
-  
-  
   .signin-body > #signin-form {
     width: 350px;
+  }
+  
+  .signup-body .form-group {
+    width: 302px;
   }
 }
 
@@ -96,6 +129,7 @@
     width: 350px;
   }  
   
+  .index-body h1,
   .signup-body h1 {
     font-size: 10vw;
   }  
@@ -112,10 +146,11 @@
     margin-bottom: 0;
   }
   
-  .signup-body {
+  .index-body {
     margin-top: 0;
   }
   
+  .index-body h1,
   .signup-body h1 {
     font-size: 7vw;
   }
@@ -127,10 +162,11 @@
     box-shadow: 0 0 5px #888888;
   } 
    
-  .signup-body {
+  .index-body {
     margin-top: 35px;
   }
   
+  .index-body h1,
   .signup-body h1 {
     font-size: 4em;
   }
@@ -138,6 +174,6 @@
 
 
 /* TEMP */
-.signup-body {
+.index-body {
   height: 450px;
 }

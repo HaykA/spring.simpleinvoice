@@ -49,14 +49,14 @@
               <security:csrfInput/>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon" id="addon-username"><bs:gi icon="user"/></span>
+                  <label class="input-group-addon" id="addon-username" for="ipt-username"><bs:gi icon="user"/></label>
                   <input type="text" name="username" id="ipt-username" class="form-control signin-input"
                     placeholder="${text_Username}" aria-describedby="addon-username" maxlength="45">
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon" id="addon-password"><bs:gi icon="lock"/></span>
+                  <label class="input-group-addon" id="addon-password" for="ipt-password"><bs:gi icon="lock"/></label>
                   <input type="password" name="password" id="ipt-password" class="form-control signin-input"
                     placeholder="${text_Password}" aria-describedby="addon-password" maxlength="45">
                 </div>
@@ -98,7 +98,7 @@
     <%-- Sign Up --%>
     <section>
       <article>
-        <div class="signup-body clearfix">
+        <div class="index-body clearfix">
         
           <%-- BEGIN AUTHENTICATED --%>
           <security:authorize access='isAuthenticated()'>
@@ -109,7 +109,7 @@
           <%-- BEGIN ANONYMOUS --%>
           <security:authorize access='isAnonymous()'>
           <h1>Simple Invoice 1.0</h1>
-          <a href="#" class="btn btn-lg btn-success"><bs:fa icon="asterisk"/>&nbsp;${text_Register}</a>
+          <a href="<c:url value='/signup'/>" class="btn btn-lg btn-success"><bs:fa icon="asterisk"/>&nbsp;${text_Register}</a>
           </security:authorize>
           <%-- END ANONYMOUS --%>
           

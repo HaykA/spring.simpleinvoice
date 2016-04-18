@@ -33,8 +33,8 @@
           <!-- Navbar Header -->
           <div class="navbar-header">
             <div id="brandname">
-              <a href="#" class="brand">SIMPLEINVOICE</a>
-              <a href="#" class="btn btn-sm btn-success"><bs:fa icon="asterisk"/>&nbsp;Register</a>
+              <a href="<c:url value='/'/>" class="brand">SIMPLEINVOICE</a>
+              <a href="<c:url value='/signup'/>" class="btn btn-sm btn-success"><bs:fa icon="asterisk"/>&nbsp;${text_Register}</a>
             </div>
           </div>
         </div>
@@ -58,14 +58,14 @@
               <security:csrfInput/>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon" id="addon-username"><bs:gi icon="user" size="2"/></span>
+                  <label class="input-group-addon" id="addon-username" for="ipt-username"><bs:gi icon="user" size="2"/></label>
                   <input type="text" name="username" id="ipt-username" class="form-control signin-input input-lg"
                     placeholder="${text_Username}" aria-describedby="addon-username" maxlength="45">
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon" id="addon-password"><bs:gi icon="lock" size="2"/></span>
+                  <label class="input-group-addon" id="addon-password" for="ipt-password"><bs:gi icon="lock" size="2"/></label>
                   <input type="password" name="password" id="ipt-password" class="form-control signin-input input-lg"
                     placeholder="${text_Password}" aria-describedby="addon-password" maxlength="45">
                 </div>
