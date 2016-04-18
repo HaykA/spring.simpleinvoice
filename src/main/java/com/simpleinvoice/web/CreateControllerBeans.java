@@ -12,7 +12,6 @@ import org.springframework.validation.beanvalidation.SpringValidatorAdapter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -68,10 +67,5 @@ public class CreateControllerBeans extends WebMvcConfigurerAdapter {
 			.addResourceLocations("/browser/3p/bootstrap/");
 		registry.addResourceHandler("/browser/3p/fa/**")
 		.addResourceLocations("/browser/3p/fa/");
-	}
-
-	@Override
-	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/signin").setViewName("signin");
 	}
 }

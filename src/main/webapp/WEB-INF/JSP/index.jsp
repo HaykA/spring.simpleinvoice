@@ -16,8 +16,11 @@
 <spring:message code='Username' var="text_Username"/>
 <spring:message code='Password' var="text_Password"/>
 <spring:message code='SignIn' var="text_SignIn"/>
+<spring:message code='SignOut' var="text_SignOut"/>
 <spring:message code='Register' var="text_Register"/>
 <spring:message code='SignInOrRegister' var="text_SignInOrRegister"/>
+<spring:message code='Manage' var="text_Manage"/>
+<spring:message code='Settings' var="text_Settings"/>
 
 <%-- HTML --%>
 <!DOCTYPE html>
@@ -39,7 +42,10 @@
           </div>
           <!-- SignIn-form -->
           <div id="signin-form">
-            <form class="navbar-form navbar-right" method="post">
+          
+            <%-- BEGIN ANONYMOUS --%>
+            <security:authorize access='isAnonymous()'>
+            <form class="navbar-form navbar-right" method="post" action="<c:url value='/signin'/>" id="loginform">
               <security:csrfInput/>
               <div class="form-group">
                 <div class="input-group">
@@ -57,6 +63,34 @@
               </div>
               <button type="submit" class="btn btn-primary"><bs:fa icon="sign-in"/>&nbsp;${text_SignIn}</button>
             </form>
+            </security:authorize>
+            <%-- END ANONYMOUS --%>
+            
+            <%-- BEGIN AUTHENTICATED --%>
+            <security:authorize access='isAuthenticated()'>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                  aria-haspopup="true" aria-expanded="false"><bs:fa icon="user" fixedWidth="true"/>&nbsp;${user.name}<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#"><bs:fa icon="suitcase" fixedWidth="true"/>&nbsp;${text_Manage}</a></li>
+            <li><a href="#"><bs:fa icon="gear" fixedWidth="true"/>&nbsp;${text_Settings}</a></li>
+            <li role="separator" class="divider"></li>
+            <li>
+              <form method="post" action="<c:url value='/logout'/>" id="logoutform">
+                <security:csrfInput/>
+                <input type="hidden" id="logoutbutton" value="logout"/>
+              </form>
+              <a href="#" onclick="$('#logoutform').submit()"><bs:fa icon="sign-out" fixedWidth="true"/>&nbsp;${text_SignOut}</a>
+            </li>
+          </ul>
+        </li>
+            </ul>
+            
+            
+            </security:authorize>
+            <%-- END AUTHENTICATED --%>
+            
           </div>
         </div>
       </nav>
@@ -65,8 +99,20 @@
     <section>
       <article>
         <div class="signup-body clearfix">
+        
+          <%-- BEGIN AUTHENTICATED --%>
+          <security:authorize access='isAuthenticated()'>
+          <h1>Hello <security:authentication property="name"/></h1>
+          </security:authorize>
+          <%-- END AUTHENTICATED --%>
+          
+          <%-- BEGIN ANONYMOUS --%>
+          <security:authorize access='isAnonymous()'>
           <h1>Simple Invoice 1.0</h1>
           <a href="#" class="btn btn-lg btn-success"><bs:fa icon="asterisk"/>&nbsp;${text_Register}</a>
+          </security:authorize>
+          <%-- END ANONYMOUS --%>
+          
         </div>
       </article>
     </section>

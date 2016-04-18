@@ -19,17 +19,18 @@ public class CreateSecurityFilter extends WebSecurityConfigurerAdapter {
 	
 	@SuppressWarnings("unused")
 	private static final String ADMINISTRATOR = "administrator";
+	
 	@SuppressWarnings("unused")
 	private static final String USER = "user";
 	
 	private static final String SQL_USERS
-		= "select username, password, enabled from auth-user"
+		= "select username, password, enabled from simpleinvoice.auth_user"
 		+ " where username = ?";
 	
 	private static final String SQL_AUTHORITIES
-		= "select auth-user.username, authority.name as authorities from auth-user"
-		+ " inner join auth-user_authority on auth-user.id = auth-user_authority.userid"
-		+ " inner join auth-authority on auth-authority.id = auth-user_authority.authorityid"
+		= "select auth_user.username, auth_authority.name as authorities from auth_user"
+		+ " inner join auth_user_authority on auth_user.id = auth_user_authority.userid"
+		+ " inner join auth_authority on auth_authority.id = auth_user_authority.authorityid"
 		+ " where username = ?";
 	
 	@Autowired
@@ -53,10 +54,8 @@ public class CreateSecurityFilter extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		/*http.formLogin().loginPage("/signin").and()
-		.authorizeRequests()
-			.antMatchers("/").hasAnyAuthority(ADMINISTRATOR, USER);
-		http.httpBasic();*/
+		http.formLogin().loginPage("/signin");
+		http.httpBasic();
 	}
 
 }

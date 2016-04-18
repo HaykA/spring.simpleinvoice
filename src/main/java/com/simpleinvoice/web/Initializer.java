@@ -8,13 +8,14 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 import com.simpleinvoice.dao.CreateDAOBeans;
 import com.simpleinvoice.datasource.CreateDataSourceBean;
 import com.simpleinvoice.security.CreateSecurityFilter;
+import com.simpleinvoice.services.CreateServiceBeans;
 
 public class Initializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		return new Class<?>[] { CreateDataSourceBean.class,
-			CreateDAOBeans.class,
+			CreateDAOBeans.class, CreateServiceBeans.class,
 			CreateSecurityFilter.class };
 	}
 

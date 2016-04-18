@@ -58,14 +58,14 @@
               <security:csrfInput/>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon" id="addon-username"><bs:gi icon="user"/></span>
+                  <span class="input-group-addon" id="addon-username"><bs:gi icon="user" size="2"/></span>
                   <input type="text" name="username" id="ipt-username" class="form-control signin-input input-lg"
                     placeholder="${text_Username}" aria-describedby="addon-username" maxlength="45">
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon" id="addon-password"><bs:gi icon="lock"/></span>
+                  <span class="input-group-addon" id="addon-password"><bs:gi icon="lock" size="2"/></span>
                   <input type="password" name="password" id="ipt-password" class="form-control signin-input input-lg"
                     placeholder="${text_Password}" aria-describedby="addon-password" maxlength="45">
                 </div>
