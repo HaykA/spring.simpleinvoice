@@ -2,6 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@attribute name='title' required='true' type='java.lang.String'%>
 <%@attribute name='showBrandname' required='false' type='java.lang.Boolean'%>
+<%@attribute name='ignoreDefaultCss' required='false' type='java.lang.Boolean'%>
 
 <link rel="shortcut icon" href="<c:url value='/images/core/favicon.png'/>" type="image/png"/>
 
@@ -14,4 +15,6 @@
 <link rel="stylesheet" href="<c:url value='/browser/3p/fa/css/font-awesome.min.css'/>">
 
 <script type="text/javascript" src='<c:url value='/browser/core/js/default.js'/>'></script>
+<c:if test="${not ignoreDefaultCss}">
 <link rel="stylesheet" href="<c:url value='/browser/core/css/default.css' />" type="text/css"/>
+</c:if>

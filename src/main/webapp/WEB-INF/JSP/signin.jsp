@@ -22,48 +22,57 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <si:head title="${text_SignIn}" showBrandname="true"/>
+    <si:head title="${text_Register}" showBrandname="true" ignoreDefaultCss="true"/>
     <link rel="stylesheet" href="<c:url value='/browser/core/css/signin.css' />" type="text/css"/>
   </head>
   <body>
-    <header id="main-header">
-      <div class="main-header-container clearfix">
-          <div id="logo-small">
-            <img alt="${text_Logo}" src="<c:url value='/images/core/logo72.jpg'/>"/>
+    <%-- Header --%>
+    <header>
+      <nav class="navbar navbar-default navbar-signup">
+        <div class="container-fluid">
+          <!-- Navbar Header -->
+          <div class="navbar-header">
+            <div id="brandname">
+              <a href="#" class="brand">SIMPLEINVOICE</a>
+              <a href="#" class="btn btn-sm btn-success"><bs:fa icon="asterisk"/>&nbsp;Register</a>
+            </div>
           </div>
-          <h1>Simple Invoice 1.0</h1>
-          <a href="#" class="btn btn-sm btn-success"><bs:fa icon="asterisk"/>&nbsp;${text_Register}</a>      
-      </div>
-      
+        </div>
+      </nav>
     </header>
-    <!-- <div class="alert alert-warning">Hello world</div>  -->
-    <section id="main-section">
-    <form method="post">
-        
-          <div id="signin-inputgroup">
-            <div class="input-group input-group-floatleft">
-              <span class="input-group-addon" id="addon-username"><bs:gi icon="user"/></span>
-              <input type="text" name="username" id="ipt-username" class="form-control"
-                placeholder="${text_Username}" aria-describedby="addon-username" maxlength="45">
-            </div>
-            <div class="input-group input-group-floatleft">
-              <span class="input-group-addon" id="addon-password"><bs:gi icon="lock"/></span>
-              <input type="password" name="password" id="ipt-password" class="form-control"
-                placeholder="${text_Password}" aria-describedby="addon-password" maxlength="45">
-            </div>
-            <div class="input-group input-group-floatleft">
-              <button type="submit" class="btn btn-primary"><bs:fa icon="sign-in"/>&nbsp;${text_SignIn}</button>
-            </div>
+    <%-- Sign In --%>
+    <section>
+      <article>
+        <%-- Sign In Alert --%>
+        <c:if test='${param.error != null}'>
+        <div class="alert alert-danger alert-dismissible signin-alert" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <bs:fa icon="warning"/><strong> Warning!</strong> Better check yourself, you're not looking too good.
+        </div>
+        </c:if>
+        <%-- Sign In Form --%>
+        <div class="signin-body clearfix">
+          <!-- SignIn-form -->
+          <div id="signin-form">
+            <form method="post">
+              <security:csrfInput/>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon" id="addon-username"><bs:gi icon="user"/></span>
+                  <input type="text" name="username" id="ipt-username" class="form-control signin-input input-lg"
+                    placeholder="${text_Username}" aria-describedby="addon-username" maxlength="45">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon" id="addon-password"><bs:gi icon="lock"/></span>
+                  <input type="password" name="password" id="ipt-password" class="form-control signin-input input-lg"
+                    placeholder="${text_Password}" aria-describedby="addon-password" maxlength="45">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-lg btn-primary"><bs:fa icon="sign-in"/>&nbsp;${text_SignIn}</button>
+            </form>
           </div>
-
-        <security:csrfInput/>
-      </form>
-    
-    
-      <article id="main-article">
-        <div id="signin-body">
-          
-          
         </div>
       </article>
     </section>

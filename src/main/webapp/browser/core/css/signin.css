@@ -1,58 +1,143 @@
 @CHARSET "UTF-8";
-#main-header {
-	background: url('../../../images/core/bg.jpg');
-	padding: 5px 15px;
-	vertical-align: middle;
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:400,600);
+@import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700);
+
+.navbar-signin,
+.navbar-signup {
+  background: url('../../../images/core/bg.jpg');
+  border-radius: 0;
 }
 
-#main-header #ipt-username, #ipt-password {
-	width: 175px;
+.navbar-signup {
+  margin: 0;
+  min-height: 0;
 }
 
-#main-header #signin-inputgroup .input-group-floatleft {
-	margin-left: 4px;
-	float: left
+.navbar-signin .navbar-header,
+.navbar-signup .navbar-header {
+  margin: 0;
 }
 
-#main-header #signin-inputgroup .input-group-floatleft span.input-group-addon {
-	display: block;
-	padding: 8px 12px;
-	float: left;
-	width: 39px;
-}
-
-#logo {
-  display: table-cell;
+#brand {
   background-color: #fff;
-  padding: 5px 14px;
-  float: left;
-  
   border-radius: 10px;
-  margin-bottom: -30px;
-  box-shadow: 0 0 5px #888888;
-}
-
-#signin-body {
-  margin-top: 35px;
-  padding: 5px 15px;
-  background-color: #dddde3;
-}
-
-#logo-small {
   display: table-cell;
-  background-color: #fff;
-  padding: 5px 10px;
   float: left;
-  border-radius: 5px;
-  box-shadow: 0 0 5px #888888;
+  margin-top: 5px;
+  padding: 5px 14px;
 }
 
-#main-header h1 {
-  margin: 0 10px;
-  font-size: 3em;
+#brandname a.brand {
+  vertical-align: middle;
+  font: 700 2.75em "Yanone Kaffeesatz";
+  text-decoration: none;
+  color: #333;
 }
 
-.main-header-container {
-  display: flex;
-  align-items: center;
+.navbar-signin #ipt-username,
+.navbar-signin #ipt-password {
+  width: 175px;
+}
+
+.signup-body,
+.signin-body {
+  background-color: #e9eaf3;
+  padding: 5px 15px;
+}
+
+.signup-body h1 {
+  font-family: "Titillium Web";
+  margin-top: 10px;
+}
+
+.signin-body > #signin-form {
+  margin: 50px auto;
+}
+
+.signin-body > #signin-form .form-group {
+  margin-bottom: 10px;
+}
+
+.signin-alert {
+  margin: 10px;
+}
+
+
+@media screen and (max-width: 480px) {
+  .navbar-signin #ipt-username,
+  .navbar-signin #ipt-password {
+    width: 100%;
+  }
+  
+  .signup-body h1 {
+    font-size: 10vw;
+  } 
+  
+  .signin-body > #signin-form {
+    width: 100%;    
+  }
+  
+  #brandname a.brand {
+    font-size: 2.5em;
+  }
+}
+
+@media screen and (min-width: 479px) {
+  
+  
+  .signin-body > #signin-form {
+    width: 350px;
+  }
+}
+
+@media screen and (min-width: 479px) and (max-width: 767px)  {
+  .navbar-signin #ipt-username,
+  .navbar-signin #ipt-password {
+    width: 350px;
+  }  
+  
+  .signup-body h1 {
+    font-size: 10vw;
+  }  
+}
+
+@media screen and (max-width: 767px) {
+  .navbar-signin {
+	margin-bottom: 0;
+  }
+  
+  .navbar-signin .navbar-form {
+    border: none;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  
+  .signup-body {
+    margin-top: 0;
+  }
+  
+  .signup-body h1 {
+    font-size: 7vw;
+  }
+}
+  
+@media screen and (min-width: 768px) {
+  #brand {
+    margin-bottom: -30px;
+    box-shadow: 0 0 5px #888888;
+  } 
+   
+  .signup-body {
+    margin-top: 35px;
+  }
+  
+  .signup-body h1 {
+    font-size: 4em;
+  }
+}
+
+
+/* TEMP */
+.signup-body {
+  height: 450px;
 }

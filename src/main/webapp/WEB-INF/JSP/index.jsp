@@ -23,39 +23,48 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <si:head title="${text_SignInOrRegister}" showBrandname="true"/>
+    <si:head title="${text_SignInOrRegister}" showBrandname="true" ignoreDefaultCss="true"/>
     <link rel="stylesheet" href="<c:url value='/browser/core/css/signin.css' />" type="text/css"/>
   </head>
   <body>
-    <header id="main-header">
-      <form method="post">
-        <div class="main-header-container clearfix">
-          <div id="logo">
-            <img alt="${text_Logo}" src="<c:url value='/images/core/logo.jpg'/>"/>
+    <%-- Header --%>
+    <header>
+      <nav class="navbar navbar-default navbar-signin">
+        <div class="container-fluid">
+          <!-- Navbar Header -->
+          <div class="navbar-header">
+            <div id="brand">
+              <img alt="${text_Logo}" src="<c:url value='/images/core/logo.jpg'/>"/>
+            </div>
           </div>
-          <div id="signin-inputgroup" class="pull-right">
-            <div class="input-group input-group-floatleft">
-              <span class="input-group-addon" id="addon-username"><bs:gi icon="user"/></span>
-              <input type="text" name="username" id="ipt-username" class="form-control"
-                placeholder="${text_Username}" aria-describedby="addon-username" maxlength="45">
-            </div>
-            <div class="input-group input-group-floatleft">
-              <span class="input-group-addon" id="addon-password"><bs:gi icon="lock"/></span>
-              <input type="password" name="password" id="ipt-password" class="form-control"
-                placeholder="${text_Password}" aria-describedby="addon-password" maxlength="45">
-            </div>
-            <div class="input-group input-group-floatleft">
+          <!-- SignIn-form -->
+          <div id="signin-form">
+            <form class="navbar-form navbar-right" method="post">
+              <security:csrfInput/>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon" id="addon-username"><bs:gi icon="user"/></span>
+                  <input type="text" name="username" id="ipt-username" class="form-control signin-input"
+                    placeholder="${text_Username}" aria-describedby="addon-username" maxlength="45">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon" id="addon-password"><bs:gi icon="lock"/></span>
+                  <input type="password" name="password" id="ipt-password" class="form-control signin-input"
+                    placeholder="${text_Password}" aria-describedby="addon-password" maxlength="45">
+                </div>
+              </div>
               <button type="submit" class="btn btn-primary"><bs:fa icon="sign-in"/>&nbsp;${text_SignIn}</button>
-            </div>
+            </form>
           </div>
         </div>
-        <security:csrfInput/>
-      </form>
+      </nav>
     </header>
-    <!-- <div class="alert alert-warning">Hello world</div>  -->
-    <section id="main-section">
-      <article id="main-article">
-        <div id="signin-body">
+    <%-- Sign Up --%>
+    <section>
+      <article>
+        <div class="signup-body clearfix">
           <h1>Simple Invoice 1.0</h1>
           <a href="#" class="btn btn-lg btn-success"><bs:fa icon="asterisk"/>&nbsp;${text_Register}</a>
         </div>
