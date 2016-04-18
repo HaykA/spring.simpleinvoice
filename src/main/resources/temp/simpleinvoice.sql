@@ -1,8 +1,10 @@
+CREATE DATABASE  IF NOT EXISTS `simpleinvoice` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `simpleinvoice`;
 -- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
 -- Host: localhost    Database: simpleinvoice
 -- ------------------------------------------------------
--- Server version	5.7.10-log
+-- Server version	5.6.30-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,13 +18,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `auth-authority`
+-- Table structure for table `auth_authority`
 --
 
-DROP TABLE IF EXISTS `auth-authority`;
+DROP TABLE IF EXISTS `auth_authority`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `auth-authority` (
+CREATE TABLE `auth_authority` (
   `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   UNIQUE KEY `id_UNIQUE` (`id`)
@@ -30,23 +32,23 @@ CREATE TABLE `auth-authority` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `auth-authority`
+-- Dumping data for table `auth_authority`
 --
 
-LOCK TABLES `auth-authority` WRITE;
-/*!40000 ALTER TABLE `auth-authority` DISABLE KEYS */;
-INSERT INTO `auth-authority` VALUES (1,'administrator'),(2,'user');
-/*!40000 ALTER TABLE `auth-authority` ENABLE KEYS */;
+LOCK TABLES `auth_authority` WRITE;
+/*!40000 ALTER TABLE `auth_authority` DISABLE KEYS */;
+INSERT INTO `auth_authority` VALUES (1,'administrator'),(2,'user');
+/*!40000 ALTER TABLE `auth_authority` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `auth-user`
+-- Table structure for table `auth_user`
 --
 
-DROP TABLE IF EXISTS `auth-user`;
+DROP TABLE IF EXISTS `auth_user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `auth-user` (
+CREATE TABLE `auth_user` (
   `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(45) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -62,40 +64,40 @@ CREATE TABLE `auth-user` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `auth-user`
+-- Dumping data for table `auth_user`
 --
 
-LOCK TABLES `auth-user` WRITE;
-/*!40000 ALTER TABLE `auth-user` DISABLE KEYS */;
-INSERT INTO `auth-user` VALUES (1,'admin','$2a$10$ckOW0MK1WkrYX4jhoffZL.WGNlYAg.jdc4xqVLVoqWisaNWsZw6Bu',1,'avetisyan@live.be','Hayk','Avetisyan');
-/*!40000 ALTER TABLE `auth-user` ENABLE KEYS */;
+LOCK TABLES `auth_user` WRITE;
+/*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
+INSERT INTO `auth_user` VALUES (1,'admin','$2a$10$3DPuiwzO.I2UYggelBe8NuCHdd7Jblz2cu8K0ZkkguQZYnCIA4u5O',1,'avetisyan@live.be','Hayk','Avetisyan');
+/*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `auth-user_authority`
+-- Table structure for table `auth_user_authority`
 --
 
-DROP TABLE IF EXISTS `auth-user_authority`;
+DROP TABLE IF EXISTS `auth_user_authority`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `auth-user_authority` (
+CREATE TABLE `auth_user_authority` (
   `userid` int(9) unsigned NOT NULL,
   `authorityid` int(9) unsigned NOT NULL,
   PRIMARY KEY (`userid`,`authorityid`),
   KEY `fk_autority$authorityid_idx` (`authorityid`),
-  CONSTRAINT `fk_autority$authorityid` FOREIGN KEY (`authorityid`) REFERENCES `auth-authority` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_user$userid` FOREIGN KEY (`userid`) REFERENCES `auth-user` (`id`) ON DELETE CASCADE
+  CONSTRAINT `fk_autority$authorityid` FOREIGN KEY (`authorityid`) REFERENCES `auth_authority` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_user$userid` FOREIGN KEY (`userid`) REFERENCES `auth_user` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `auth-user_authority`
+-- Dumping data for table `auth_user_authority`
 --
 
-LOCK TABLES `auth-user_authority` WRITE;
-/*!40000 ALTER TABLE `auth-user_authority` DISABLE KEYS */;
-INSERT INTO `auth-user_authority` VALUES (1,1);
-/*!40000 ALTER TABLE `auth-user_authority` ENABLE KEYS */;
+LOCK TABLES `auth_user_authority` WRITE;
+/*!40000 ALTER TABLE `auth_user_authority` DISABLE KEYS */;
+INSERT INTO `auth_user_authority` VALUES (1,1);
+/*!40000 ALTER TABLE `auth_user_authority` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -107,4 +109,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-15 16:11:28
+-- Dump completed on 2016-04-19  0:11:32
