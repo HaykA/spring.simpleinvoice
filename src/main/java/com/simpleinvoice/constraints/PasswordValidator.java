@@ -11,8 +11,8 @@ public class PasswordValidator implements  ConstraintValidator<MatchingPassword,
 	public void initialize(MatchingPassword constraintAnnotation) {}
 
 	@Override
-	public boolean isValid(ControlPassword controlPassword, ConstraintValidatorContext context) {
-		return controlPassword.getValue().equals(controlPassword.getControlValue());
+	public boolean isValid(ControlPassword password, ConstraintValidatorContext context) {
+		return password.getValue().equals(password.getControlValue());
 	}
 
 }

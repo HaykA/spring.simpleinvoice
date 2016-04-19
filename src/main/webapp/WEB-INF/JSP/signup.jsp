@@ -92,13 +92,13 @@
               </div>
               <div class="form-group">
                   <form:label path="password.value" class="input-group-addon" id="addon-password">Password</form:label>
-                  <form:input path="password.value" class="form-control signin-input"
+                  <form:input path="password.value" type="password" class="form-control signin-input"
                     placeholder="${text_Password}" aria-describedby="addon-password" maxlength="45"/>
                   <form:errors path="password.value"/>
               </div>
               <div class="form-group">
                   <form:label path="password.controlValue" class="input-group-addon" id="addon-r_password">Repeat Password</form:label>
-                  <form:input path="password.controlValue" class="form-control signin-input"
+                  <form:input path="password.controlValue" type="password" class="form-control signin-input"
                     placeholder="${text_Password}" aria-describedby="addon-r_password" maxlength="45"/>
                   <form:errors path="password.controlValue"/>
               </div>

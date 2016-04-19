@@ -2,11 +2,13 @@ package com.simpleinvoice.forms;
 
 import java.io.Serializable;
 
+import javax.validation.Valid;
+
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 
-import com.simpleinvoice.constraints.MatchingEmail;
-import com.simpleinvoice.constraints.MatchingPassword;
+import com.simpleinvoice.entities.User;
+import com.simpleinvoice.entities.UserAuthority;
 import com.simpleinvoice.valueobjects.ControlEmail;
 import com.simpleinvoice.valueobjects.ControlPassword;
 
@@ -14,7 +16,7 @@ public class UserForm implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@MatchingEmail
+	@Valid
 	private ControlEmail email;
 	@NotBlank @SafeHtml
 	private String username;
@@ -22,7 +24,7 @@ public class UserForm implements Serializable {
 	private String firstname;
 	@NotBlank @SafeHtml
 	private String secondname;
-	@MatchingPassword
+	@Valid
 	private ControlPassword password;
 	
 	public UserForm() {}
@@ -65,5 +67,16 @@ public class UserForm implements Serializable {
 
 	public void setPassword(ControlPassword password) {
 		this.password = password;
+	}
+	
+	public void clearPassword() {
+		password.clear();
+	}
+	
+	public User createUser(UserAuthority authority) {
+		User user = new User(email.getValue(), username, firstname, secondname);
+		user.setPassword(password.getValue());
+		user.addAuthority(authority);
+		return user;
 	}
 }

@@ -2,15 +2,18 @@ package com.simpleinvoice.valueobjects;
 
 import java.io.Serializable;
 
-import com.simpleinvoice.constraints.Password;
+import org.hibernate.validator.constraints.NotBlank;
 
+import com.simpleinvoice.constraints.MatchingPassword;
+
+@MatchingPassword
 public class ControlPassword implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Password
+	@NotBlank
 	private String value;
-	@Password
+	@NotBlank
 	private String controlValue;
 	
 	public ControlPassword() {}
@@ -34,5 +37,10 @@ public class ControlPassword implements Serializable {
 
 	public void setControlValue(String controlValue) {
 		this.controlValue = controlValue;
+	}
+	
+	public void clear() {
+		value = null;
+		controlValue = null;
 	}
 }

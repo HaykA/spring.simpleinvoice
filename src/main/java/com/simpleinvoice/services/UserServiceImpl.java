@@ -16,6 +16,12 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
+	@ModifyingTransactionalServiceMethod
+	public void create(User user) {
+		userDAO.save(user);
+	}
+	
+	@Override
 	public User findByUsername(String username) {
 		return userDAO.findByUsername(username);
 	}

@@ -11,8 +11,8 @@ public class EmailValidator implements  ConstraintValidator<MatchingEmail, Contr
 	public void initialize(MatchingEmail constraintAnnotation) {}
 
 	@Override
-	public boolean isValid(ControlEmail controlEmail, ConstraintValidatorContext context) {
-		return controlEmail.getValue().equalsIgnoreCase(controlEmail.getControlValue());
+	public boolean isValid(ControlEmail email, ConstraintValidatorContext context) {
+		return email.getValue().equalsIgnoreCase(email.getControlValue());
 	}
 
 }
