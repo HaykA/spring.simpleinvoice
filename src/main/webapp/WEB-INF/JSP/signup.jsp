@@ -6,6 +6,7 @@
 <%-- Spring-taglibs --%>
 <%@taglib prefix='spring' uri='http://www.springframework.org/tags'%>
 <%@taglib prefix='security' uri='http://www.springframework.org/security/tags'%>
+<%@taglib prefix='form' uri='http://www.springframework.org/tags/form'%>
 
 <%-- Custom-taglibs --%>
 <%@taglib prefix="si" uri="http://simpleinvoice.com/core/tags"%>
@@ -51,47 +52,55 @@
           <bs:fa icon="warning"/><strong> Warning!</strong> Better check yourself, you're not looking too good.
         </div>
         </c:if>
-        <%-- Sign In Form --%>
+        <%-- Sign Up Form --%>
+        <c:url value='/signup' var='url'/>
         <div class="signup-body clearfix">
           <!-- SignIn-form -->
           <div id="signup-form">
-            <form method="post">
+            <form:form action='${url}' commandName='userForm'>
               <security:csrfInput/>
               <h1>Sign Up</h1>
               <div class="form-group">
-                  <label class="input-group-addon" id="addon-email" for="ipt-email">Email</label>
-                  <input type="text" name="email" id="ipt-email" class="form-control signin-input"
-                    placeholder="E-Mail" aria-describedby="addon-email" maxlength="45">
+                  <form:label path="email.value" class="input-group-addon" id="addon-email">Email</form:label>
+                  <form:input path="email.value" class="form-control signin-input"
+                    placeholder="E-Mail" aria-describedby="addon-email" maxlength="45"/>
+                  <form:errors path="email.value"/>
               </div>
               <div class="form-group">
-                  <label class="input-group-addon" id="addon-r_email" for="ipt-r_email">Repeat Email</label>
-                  <input type="text" name="r_email" id="ipt-r_email" class="form-control signin-input"
-                    placeholder="E-Mail" aria-describedby="addon-r_email" maxlength="45">
+                  <form:label path="email.controlValue" class="input-group-addon" id="addon-r_email">Repeat Email</form:label>
+                  <form:input path="email.controlValue" class="form-control signin-input"
+                    placeholder="E-Mail" aria-describedby="addon-r_email" maxlength="45"/>
+                  <form:errors path="email.controlValue"/>
               </div>
               <div class="form-group">
-                  <label class="input-group-addon" id="addon-username" for="ipt-username">Username</label>
-                  <input type="text" name="username" id="ipt-username" class="form-control signin-input"
-                    placeholder="${text_Username}" aria-describedby="addon-username" maxlength="45">
+                  <form:label path="username" class="input-group-addon" id="addon-username">Username</form:label>
+                  <form:input path="username" class="form-control signin-input"
+                    placeholder="${text_Username}" aria-describedby="addon-username" maxlength="45"/>
+                  <form:errors path="username"/>
               </div>
               <div class="form-group">
-                  <label class="input-group-addon" id="addon-firstname" for="ipt-firstname">Firstname</label>
-                  <input type="text" name="firstname" id="ipt-firstname" class="form-control signin-input"
-                    placeholder="Firstname" aria-describedby="addon-firstname" maxlength="45">
+                  <form:label path="firstname" class="input-group-addon" id="addon-firstname">Firstname</form:label>
+                  <form:input path="firstname" class="form-control signin-input"
+                    placeholder="Firstname" aria-describedby="addon-firstname" maxlength="45"/>
+                  <form:errors path="firstname"/>
               </div>
               <div class="form-group">
-                  <label class="input-group-addon" id="addon-secondname" for="ipt-secondname">Secondname</label>
-                  <input type="text" name="secondname" id="ipt-secondname" class="form-control signin-input"
-                    placeholder="Secondname" aria-describedby="addon-secondname" maxlength="45">
+                  <form:label path="secondname" class="input-group-addon" id="addon-secondname">Secondname</form:label>
+                  <form:input path="secondname" class="form-control signin-input"
+                    placeholder="Secondname" aria-describedby="addon-secondname" maxlength="45"/>
+                  <form:errors path="secondname"/>
               </div>
               <div class="form-group">
-                  <label class="input-group-addon" id="addon-password" for="ipt-password">Password</label>
-                  <input type="password" name="password" id="ipt-password" class="form-control signin-input"
-                    placeholder="${text_Password}" aria-describedby="addon-password" maxlength="45">
+                  <form:label path="password.value" class="input-group-addon" id="addon-password">Password</form:label>
+                  <form:input path="password.value" class="form-control signin-input"
+                    placeholder="${text_Password}" aria-describedby="addon-password" maxlength="45"/>
+                  <form:errors path="password.value"/>
               </div>
               <div class="form-group">
-                  <label class="input-group-addon" id="addon-r_password" for="ipt-r_password">Repeat Password</label>
-                  <input type="password" name="r_password" id="ipt-r_password" class="form-control signin-input"
-                    placeholder="${text_Password}" aria-describedby="addon-r_password" maxlength="45">
+                  <form:label path="password.controlValue" class="input-group-addon" id="addon-r_password">Repeat Password</form:label>
+                  <form:input path="password.controlValue" class="form-control signin-input"
+                    placeholder="${text_Password}" aria-describedby="addon-r_password" maxlength="45"/>
+                  <form:errors path="password.controlValue"/>
               </div>
               ${captcha}
     
@@ -99,7 +108,7 @@
       <br/>
 
               <button type="submit" class="btn btn-success"><bs:fa icon="asterisk"/>&nbsp;${text_Register}</button>
-            </form>
+            </form:form>
           </div>
         </div>
       </article>
