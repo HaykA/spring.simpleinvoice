@@ -1,5 +1,9 @@
 package com.simpleinvoice.web;
 
+import static com.simpleinvoice.util.Attributes.USER;
+import static com.simpleinvoice.util.InternalResourceResolver.INDEX;
+import static com.simpleinvoice.util.InternalResourceResolver.ROOT;
+
 import java.security.Principal;
 import java.util.Locale;
 
@@ -12,10 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.simpleinvoice.services.UserService;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping(ROOT)
 class IndexController {
 
-	private final static String VIEW = "index";
 	private final UserService userService;
 	
 	@Autowired
@@ -25,9 +28,9 @@ class IndexController {
 		
 	@RequestMapping(method = RequestMethod.GET)
 	ModelAndView index(Locale locale, Principal principal) {
-		ModelAndView modelAndView = new ModelAndView(VIEW);
+		ModelAndView modelAndView = new ModelAndView(INDEX);
 		if (principal != null) {
-			modelAndView.addObject("user", userService.findByUsername(principal.getName()));
+			modelAndView.addObject(USER, userService.findByUsername(principal.getName()));
 		}
 		return modelAndView;
 	}

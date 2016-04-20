@@ -1,5 +1,11 @@
 package com.simpleinvoice.web;
 
+import static com.simpleinvoice.util.InternalResourceResolver.SIGNIN;
+import static com.simpleinvoice.util.InternalResourceResolver.SIGNUP;
+import static com.simpleinvoice.util.InternalResourceResolver._SIGNUP;
+import static com.simpleinvoice.util.InternalResourceResolver.redirectTo;
+import static com.simpleinvoice.util.Attributes.*;
+
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +24,9 @@ import com.simpleinvoice.services.UserAuthorityService;
 import com.simpleinvoice.services.UserService;
 
 @Controller
-@RequestMapping("/signup")
-@SessionAttributes("form")
+@RequestMapping(_SIGNUP)
+@SessionAttributes(FORM)
 public class SignUpController {
-	private final static String VIEW = "signup";
-	private final static String REDIRECT_TO_SIGNIN = "redirect:/signin";
 	
 	private final UserService userService;
 	private final UserAuthorityService userAuthorityService;
@@ -33,7 +37,7 @@ public class SignUpController {
 		this.userAuthorityService = userAuthorityService;
 	}
 	
-	@InitBinder("userForm")
+	@InitBinder(USER_FORM)
 	void initBinderUserForm(WebDataBinder binder) {
 		binder.initDirectFieldAccess();
 	}
@@ -45,19 +49,21 @@ public class SignUpController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	ModelAndView begin(Locale locale) {
-		return new ModelAndView(VIEW).addObject(new UserForm());
+		return new ModelAndView(SIGNUP).addObject(new UserForm());
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
 	String validate(Locale locale, @Validated UserForm userForm, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
+			//TODO to be removed {
 			System.out.println("form has " + bindingResult.getErrorCount() + " errors");
 			bindingResult.getAllErrors().stream().forEach(System.out::println);
+			// }
 			userForm.clearPassword();
-			return VIEW;
+			return SIGNUP;
 		} else {
-			userService.create(userForm.createUser(userAuthorityService.findByName("user")));
-			return REDIRECT_TO_SIGNIN;
+			userService.create(userForm.createUser(userAuthorityService.findByName(USER)));
+			return redirectTo(SIGNIN);
 		}
 		
 	}
