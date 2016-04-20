@@ -54,9 +54,11 @@ public class SignUpController {
 			System.out.println("form has " + bindingResult.getErrorCount() + " errors");
 			bindingResult.getAllErrors().stream().forEach(System.out::println);
 			userForm.clearPassword();
+			return VIEW;
 		} else {
 			userService.create(userForm.createUser(userAuthorityService.findByName("user")));
+			return REDIRECT_TO_SIGNIN;
 		}
-		return REDIRECT_TO_SIGNIN;
+		
 	}
 }
