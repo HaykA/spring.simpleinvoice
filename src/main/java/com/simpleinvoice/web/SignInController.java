@@ -1,6 +1,6 @@
 package com.simpleinvoice.web;
 
-import static com.simpleinvoice.util.InternalResourceResolver.INDEX;
+import static com.simpleinvoice.util.InternalResourceResolver.ROOT;
 import static com.simpleinvoice.util.InternalResourceResolver.SIGNIN;
 import static com.simpleinvoice.util.InternalResourceResolver._SIGNIN;
 import static com.simpleinvoice.util.InternalResourceResolver.redirectTo;
@@ -23,11 +23,11 @@ public class SignInController {
 		if (principal == null) {
 			return SIGNIN;
 		}
-		return redirectTo(INDEX);
+		return redirectTo(ROOT);
 	}
 	
 	@RequestMapping(params = "logout", method = RequestMethod.GET)
 	String signout(Locale locale) {
-		return redirectTo(INDEX);
+		return redirectTo(ROOT);
 	}
 }

@@ -3,7 +3,8 @@ package com.simpleinvoice.util;
 public final class InternalResourceResolver {
 	private InternalResourceResolver() {}
 	
-	public static final String ROOT = "/";
+	public static final String ROOT = "";
+	public static final String _ROOT = "/";
 	public static final String INDEX = "index";
 	public static final String _INDEX = ROOT + INDEX;
 	public static final String SIGNIN = "signin";
